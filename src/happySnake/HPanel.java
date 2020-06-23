@@ -1,5 +1,4 @@
 package happySnake;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -8,21 +7,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
-import java.util.function.IntPredicate;
+
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
 
+@SuppressWarnings("serial")
 public class HPanel extends JPanel implements KeyListener,ActionListener {
-	ImageIcon title = new ImageIcon("BGUp.jpg");
-	ImageIcon body = new ImageIcon("body.png");
-	ImageIcon up = new ImageIcon("up.png");
-	ImageIcon down = new ImageIcon("down.png");
-	ImageIcon left = new ImageIcon("left.png");
-	ImageIcon right = new ImageIcon("right.png");
-	ImageIcon food = new ImageIcon("food.png");
+	ImageIcon title = new ImageIcon("src/BGUp.jpg");
+	ImageIcon body = new ImageIcon("src/body.png");
+	ImageIcon up = new ImageIcon("src/up.png");
+	ImageIcon down = new ImageIcon("src/down.png");
+	ImageIcon left = new ImageIcon("src/left.png");
+	ImageIcon right = new ImageIcon("src/right.png");
+	ImageIcon food = new ImageIcon("src/food.png");
 	int score=0;
 	int len = 3;
 	int[] snakex = new int[750];
@@ -30,19 +30,11 @@ public class HPanel extends JPanel implements KeyListener,ActionListener {
 	String fx = "R";
 	boolean isStarted=false;
 	boolean isFailed=false;
-	Timer timer=new Timer(150,this);//定时器
+	Timer timer=new Timer(100,this);//定时器
 	int foodx;
 	int foody;//生成食物座标
 	Random rand=new Random();//生成食物座标的随机数
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public HPanel() {//构造函数
 		initSanke();
 		this.setFocusable(true);
@@ -74,17 +66,18 @@ public class HPanel extends JPanel implements KeyListener,ActionListener {
 		up.paintIcon(this, g, snakex[0], snakey[0]); break;
 	  }
 	 food.paintIcon(this, g, foodx, foody);
-		 if(isStarted==false)
-		 {
+		 //if(isStarted==false)
+		 //{
 			 g.setColor(Color.white);
 			 g.setFont(new Font("arial",Font.BOLD,40));
-			 g.drawString("space", 300, 300);
-		 }
+			 g.drawString("Press space to countinue/pause", 50, 50);
+		// }
 		 if(isFailed)
 		 {
 			 g.setColor(Color.red);
 			 g.setFont(new Font("arial",Font.BOLD,40));
-			 g.drawString("Failed:Score:"+score, 200, 50);
+			 g.drawString("Failed:Score:"+score, 300, 300);
+			 g.drawString("Press space to resume", 300, 350);
 		 }
 	  
 	  for(int i=1;i<len;i++)
@@ -105,8 +98,8 @@ public class HPanel extends JPanel implements KeyListener,ActionListener {
 		snakex[2] = 50;
 		snakey[2] = 100;
 		fx="R";
-		foodx=50+25*rand.nextInt(32);
-		foody=75+25*rand.nextInt(21);
+		foodx=25+25*rand.nextInt(30);
+		foody=75+25*rand.nextInt(20);
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -175,7 +168,7 @@ public class HPanel extends JPanel implements KeyListener,ActionListener {
 		{len++;
 		score=score+10;
 		foodx=25+25*rand.nextInt(30);
-		foody=50+25*rand.nextInt(21);
+		foody=75+25*rand.nextInt(20);
 		}
 		
 		for(int i=1;i<len;i++)

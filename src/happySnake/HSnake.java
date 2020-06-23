@@ -1,17 +1,20 @@
 package happySnake;
 import javax.swing.JFrame;
+    
 
-public class HSnake {
+@SuppressWarnings("serial")
+public class HSnake extends JFrame {
 
-	public static void main(String[] args) {
-		JFrame frame=new JFrame();
-		frame.setBounds(10,10,900,720);
+
+	public  HSnake() {
+		JFrame frame=new JFrame("HappySnake");
+		frame.setBounds(100,100,900,720);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new HPanel());
 		
 		
-		
+
 		frame.setVisible(true);
 		
 
