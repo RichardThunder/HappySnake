@@ -54,6 +54,7 @@ public class Start extends JFrame {
 		contentPane.setLayout(null);
 		
 		
+		
 		JButton btnNewButton = new JButton("START");//������ʼ��ť
 		btnNewButton.addActionListener
 		(new ActionListener() {//�����ʼ��ť������Ϸ
